@@ -10,16 +10,6 @@ void setMC(){
       Wire.write('MC'); //send MC command for continuous mode
       Wire.endTransmission();
       delay(1000);
-
-      /*Wire.beginTransmission(0x10);  // take single measurement
-      Wire.write('Q');
-      Wire.endTransmission();
-
-      Wire.requestFrom(0x10, 2);    // request 2 bytes from tinyLiDAR
-      while(Wire.available()){   // slave may send less than requested
-          uint8_t c = Wire.read();    // receive a byte as character
-          Serial.println(c);         // print the character
-      }*/
 }
 
 void setup() {
@@ -48,7 +38,7 @@ void loop(){
       Serial.print(millis());
       Serial.print(":");
       Serial.println(i);
-      delay(30);
+      delay(30);//required
     }
     Serial.println("[FOR END]");
 
@@ -64,9 +54,6 @@ void loop(){
     Serial.print(F("Effective Response Rate is ") );
 
     float freq = samples/(duration*.001);
-    //float freq = 1/duration;
-    //Serial.print( samples/(duration*.001) );
     Serial.print(freq);
     Serial.println(F("Hz "));
-    //delay(10);
 }
